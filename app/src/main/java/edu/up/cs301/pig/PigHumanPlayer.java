@@ -26,7 +26,9 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	/* instance variables */
 
     // These variables will reference widgets that will be modified during play
+    private TextView    playerNameTextView  = null;
     private TextView    playerScoreTextView = null;
+    private TextView    oppNameTextView     = null;
     private TextView    oppScoreTextView    = null;
     private TextView    turnTotalTextView   = null;
     private TextView    messageTextView     = null;
@@ -67,7 +69,6 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
             return;
         }
         else {
-            initAfterReady();
             if (playerNum == 0) {
                 playerScoreTextView.setText(String.valueOf(((PigGameState) info).getPlayer0Score()));
                 oppScoreTextView.setText(String.valueOf(((PigGameState) info).getPlayer1Score()));
@@ -140,7 +141,9 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
         activity.setContentView(R.layout.pig_layout);
 
         //Initialize the widget reference member variables
+        this.playerNameTextView  = (TextView)activity.findViewById(R.id.yourScoreText);
         this.playerScoreTextView = (TextView)activity.findViewById(R.id.yourScoreValue);
+        this.oppNameTextView     = (TextView)activity.findViewById(R.id.oppScoreText);
         this.oppScoreTextView    = (TextView)activity.findViewById(R.id.oppScoreValue);
         this.turnTotalTextView   = (TextView)activity.findViewById(R.id.turnTotalValue);
         this.messageTextView     = (TextView)activity.findViewById(R.id.messageTextView);
@@ -152,5 +155,18 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
         holdButton.setOnClickListener(this);
 
     }//setAsGui
+
+    @Override
+    protected void initAfterReady() {
+        if(allPlayerNames.length == 1){
+            playerNameTextView.setText(name + "'s score: ");
+            oppNameTextView.setText("");
+            oppScoreTextView.setText("");
+        } else {
+            playerNameTextView.setText(name + "'s score: ");
+            oppNameTextView.setText(allPlayerNames[1] + "'s score: ");
+        }
+        super.initAfterReady();
+    }
 
 }// class PigHumanPlayer

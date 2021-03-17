@@ -30,7 +30,7 @@ public class PigComputerPlayer extends GameComputerPlayer {
     @Override
     protected void receiveInfo(GameInfo info) {
         // TODO  You will implement this method
-        sleep(2000);
+        sleep(1000);
         PigGameState aiState;
         if(info instanceof PigGameState) {
             aiState = new PigGameState((PigGameState) info);
