@@ -82,21 +82,22 @@
                 android:layout_height="match_parent">
 
                 <TextView
+                    android:id="@+id/turnTotalText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Turn Total:"
-                    android:id="@+id/turnTotalText"
-                    android:paddingTop="25dp"
                     android:gravity="right"
-                    android:paddingRight="10dp" />
+                    android:paddingTop="20dp"
+                    android:paddingRight="10dp"
+                    android:text="Turn Total:"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <TextView
+                    android:id="@+id/turnTotalValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:paddingTop="20dp"
                     android:text="0"
-                    android:id="@+id/turnTotalValue" />
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
             </TableRow>
         </TableLayout>
 

@@ -3,6 +3,7 @@ package edu.up.cs301.pig;
 import edu.up.cs301.game.GameComputerPlayer;
 import edu.up.cs301.game.actionMsg.GameAction;
 import edu.up.cs301.game.infoMsg.GameInfo;
+import edu.up.cs301.game.infoMsg.GameState;
 import edu.up.cs301.game.util.Tickable;
 
 /**
@@ -29,6 +30,25 @@ public class PigComputerPlayer extends GameComputerPlayer {
     @Override
     protected void receiveInfo(GameInfo info) {
         // TODO  You will implement this method
+        sleep(2000);
+        PigGameState aiState;
+        if(info instanceof PigGameState) {
+            aiState = new PigGameState((PigGameState) info);
+            if(aiState.getPlayerNum() == playerNum){
+                int action = (int) (1 + Math.random()*2);
+                switch (action){
+                    case 1: //hold
+                        PigHoldAction hold = new PigHoldAction(PigComputerPlayer.this);
+                        game.sendAction(hold);
+                    case 2: //roll
+                        PigRollAction roll = new PigRollAction(PigComputerPlayer.this);
+                        game.sendAction(roll);
+                }
+            }
+            else{
+                return;
+            }
+        }
     }//receiveInfo
 
 }
