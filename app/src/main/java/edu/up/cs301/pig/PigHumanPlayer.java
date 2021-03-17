@@ -85,7 +85,6 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
             if (((PigGameState) info).getDieValue() == 1) {
                 dieImageButton.setImageResource(R.drawable.face1);
-                ((PigGameState) info).setMessage("Oh no! " + name + " rolled a 1 and lost everything!");
                 messageTextView.setText(((PigGameState) info).getMessage());
             } else if (((PigGameState) info).getDieValue() == 2) {
                 dieImageButton.setImageResource(R.drawable.face2);
@@ -100,7 +99,6 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
             }
 
             if(holdButtonClicked) {
-                ((PigGameState) info).setMessage(name + " added " + Integer.toString(((PigGameState) info).getRunningTotal()) + " points to the final score.");
                 messageTextView.setText(((PigGameState) info).getMessage());
             }
             turnTotalTextView.setText(String.valueOf(((PigGameState) info).getRunningTotal()));

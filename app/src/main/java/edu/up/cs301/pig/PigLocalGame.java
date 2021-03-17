@@ -48,9 +48,11 @@ public class PigLocalGame extends LocalGame {
         if(action instanceof PigHoldAction){
             if(pigGameState.getPlayerNum() == 0) {
                 pigGameState.setPlayer0Score(pigGameState.getRunningTotal() + pigGameState.getPlayer0Score());
+                pigGameState.setMessage(playerNames[0] + " added " + Integer.toString(pigGameState.getRunningTotal()) + " points to the final score.");
             }
-            else if(pigGameState.getPlayerNum() == 1){
+            if(pigGameState.getPlayerNum() == 1){
                 pigGameState.setPlayer1Score(pigGameState.getRunningTotal() + pigGameState.getPlayer1Score());
+                pigGameState.setMessage(playerNames[1] + " added " + Integer.toString(pigGameState.getRunningTotal()) + " points to the final score.");
             }
             pigGameState.setRunningTotal(0);
             if(players.length > 1){
@@ -69,9 +71,11 @@ public class PigLocalGame extends LocalGame {
                 pigGameState.setRunningTotal(0);
                 if(players.length > 1){
                     if(pigGameState.getPlayerNum() == 0) {
+                        pigGameState.setMessage("Oh no! " + playerNames[0] + " rolled a 1 and lost everything! :(");
                         pigGameState.setPlayerNum(1);
                     }
                     else if (pigGameState.getPlayerNum() == 1){
+                        pigGameState.setMessage("Oh no! " + playerNames[1] + " rolled a 1 and lost everything! :(");
                         pigGameState.setPlayerNum(0);
                     }
                 }
@@ -90,8 +94,8 @@ public class PigLocalGame extends LocalGame {
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
         //TODO  You will implement this method
-        pigGameState = new PigGameState(pigGameState);
-        p.sendInfo(pigGameState);
+        PigGameState copy = new PigGameState(pigGameState);
+        p.sendInfo(copy);
     }//sendUpdatedSate
 
     /**
