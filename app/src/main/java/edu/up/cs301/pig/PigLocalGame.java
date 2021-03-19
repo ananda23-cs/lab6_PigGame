@@ -48,12 +48,13 @@ public class PigLocalGame extends LocalGame {
         if(action instanceof PigHoldAction){
             if(pigGameState.getPlayerNum() == 0) {
                 pigGameState.setPlayer0Score(pigGameState.getRunningTotal() + pigGameState.getPlayer0Score());
-                pigGameState.setMessage(playerNames[0] + " added " + String.valueOf(pigGameState.getRunningTotal()) + " points to the final score.");
+                pigGameState.setMessage(playerNames[0] + " added " + pigGameState.getRunningTotal() + " points to the final score.");
             }
             else if(pigGameState.getPlayerNum() == 1){
                 pigGameState.setPlayer1Score(pigGameState.getRunningTotal() + pigGameState.getPlayer1Score());
-                pigGameState.setMessage(playerNames[1] + " added " + String.valueOf(pigGameState.getRunningTotal()) + " points to the final score.");
+                pigGameState.setMessage(playerNames[1] + " added " + pigGameState.getRunningTotal() + " points to the final score.");
             }
+
             pigGameState.setRunningTotal(0);
             if(players.length > 1){
                 if(pigGameState.getPlayerNum() == 0) {
@@ -65,7 +66,7 @@ public class PigLocalGame extends LocalGame {
             }
             return true;
         }
-        if(action instanceof PigRollAction){
+        else if(action instanceof PigRollAction){
             pigGameState.setDieValue((int) (1 + Math.random()*6));
             if(pigGameState.getDieValue() == 1){
                 pigGameState.setRunningTotal(0);
@@ -85,7 +86,7 @@ public class PigLocalGame extends LocalGame {
             }
             return true;
         }
-        return false;
+        else { return false; }
     }//makeMove
 
     /**
