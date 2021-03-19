@@ -72,7 +72,8 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
             if (playerNum == 0) {
                 playerScoreTextView.setText(String.valueOf(((PigGameState) info).getPlayer0Score()));
                 oppScoreTextView.setText(String.valueOf(((PigGameState) info).getPlayer1Score()));
-            } else if (playerNum == 1) {
+            }
+            if (playerNum == 1){
                 playerScoreTextView.setText(String.valueOf(((PigGameState) info).getPlayer1Score()));
                 oppScoreTextView.setText(String.valueOf(((PigGameState) info).getPlayer0Score()));
             }
@@ -161,10 +162,17 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
         if(allPlayerNames.length == 1){
             playerNameTextView.setText(name + "'s score: ");
             oppNameTextView.setText("");
-            oppScoreTextView.setText("");
-        } else {
-            playerNameTextView.setText(name + "'s score: ");
-            oppNameTextView.setText(allPlayerNames[1] + "'s score: ");
+            oppScoreTextView.setVisibility(View.INVISIBLE);
+        }
+        else {
+            if(playerNum == 0) {
+                playerNameTextView.setText(allPlayerNames[0] + "'s score: ");
+                oppNameTextView.setText(allPlayerNames[1] + "'s score: ");
+            }
+            else if(playerNum == 1){
+                playerNameTextView.setText(allPlayerNames[1] + "'s score: ");
+                oppNameTextView.setText(allPlayerNames[0] + "'s score: ");
+            }
         }
         super.initAfterReady();
     }

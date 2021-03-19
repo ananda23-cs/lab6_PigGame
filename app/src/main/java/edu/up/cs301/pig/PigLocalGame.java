@@ -80,6 +80,9 @@ public class PigLocalGame extends LocalGame {
                         pigGameState.setPlayerNum(0);
                     }
                 }
+                else{
+                    pigGameState.setMessage("Oh no! " + playerNames[0] + " rolled a 1 and lost everything! :(");
+                }
             }
             else{
                 pigGameState.setRunningTotal(pigGameState.getRunningTotal()+pigGameState.getDieValue());
