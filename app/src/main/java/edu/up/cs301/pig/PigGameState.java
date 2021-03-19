@@ -15,7 +15,7 @@ public class PigGameState extends GameState {
         this.player1Score = 0;
         this.runningTotal = 0;
         this.dieValue = 0;
-        this.message = "It's Player 0's turn.";
+        this.message = "";
     }
 
     public PigGameState(PigGameState pig){
