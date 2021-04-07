@@ -4,6 +4,8 @@ import edu.up.cs301.game.GameHumanPlayer;
 import edu.up.cs301.game.GameMainActivity;
 import edu.up.cs301.game.R;
 import edu.up.cs301.game.infoMsg.GameInfo;
+import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
+import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
 
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -64,9 +66,11 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
     @Override
     public void receiveInfo(GameInfo info) {
         //TODO You will implement this method to receive state objects from the game
-        if(!(info instanceof PigGameState)){
-            flash(Color.RED, 100);
+        if(!(info instanceof PigGameState)) {
             return;
+        }
+        else if(info instanceof NotYourTurnInfo || info instanceof IllegalMoveInfo){
+            flash(Color.RED, 100);
         }
         else {
             if (playerNum == 0) {
